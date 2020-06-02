@@ -1,6 +1,5 @@
 
 import React from 'react';
-import Header from '../components/shared/Header';
 import BaseLayout from '../components/layout/BaseLayout';
 
 class About extends React.Component {
@@ -9,7 +8,6 @@ class About extends React.Component {
       <>
         <BaseLayout>
             <h1>I am About Page</h1>
-            <Header />
         </BaseLayout>
       </>
     )
