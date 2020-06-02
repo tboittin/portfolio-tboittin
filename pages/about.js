@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Header from '../components/shared/Header';
-import BaseLayout from '../components/layouts/BaseLayout';
+import BaseLayout from '../components/layout/BaseLayout';
 
 class About extends React.Component {
   render() {
@@ -15,3 +15,5 @@ class About extends React.Component {
     )
   }
 }
+
+export default About
