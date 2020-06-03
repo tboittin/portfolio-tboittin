@@ -1,5 +1,5 @@
 
-import BaseLayout from '../components/layout/BaseLayout'
+import BaseLayout from '@/components/layout/BaseLayout'
 
 import { Container, Row, Col } from 'reactstrap'
 

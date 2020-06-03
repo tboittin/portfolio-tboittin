@@ -1,6 +1,6 @@
 
-import BaseLayout from '../components/layout/BaseLayout'
-import BasePage from '../components/BasePage'
+import BaseLayout from '@/components/layout/BaseLayout'
+import BasePage from '@/components/BasePage'
 
 const Blogs = () => {
     return(
