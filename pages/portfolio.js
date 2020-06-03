@@ -1,5 +1,7 @@
 import React from 'react'
 import BaseLayout from '../components/layout/BaseLayout'
+import BasePage from '../components/BasePage'
+
 import axios from 'axios'
 
 class Portfolio extends React.Component {
@@ -20,9 +22,11 @@ class Portfolio extends React.Component {
         const {portfolio} = this.props
         return(
             <BaseLayout>
-                <h1>{portfolio.title}</h1>
-                <h2>BODY : {portfolio.body}</h2>
-                <h2>ID : {portfolio.id}</h2>
+                <BasePage>
+                    <h1>{portfolio.title}</h1>
+                    <h2>BODY : {portfolio.body}</h2>
+                    <h2>ID : {portfolio.id}</h2>
+                </BasePage>
             </BaseLayout>
         )
     }
