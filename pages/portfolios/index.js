@@ -3,22 +3,11 @@ import BaseLayout from '@/components/layout/BaseLayout'
 import BasePage from '@/components/BasePage'
 
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import {useGetPosts} from '@/actions'
 
 const Portfolios = () => {
 
-    const [posts, setPosts] = useState([]);
-
-    useEffect(() => {
-        async function getPosts() {
-            const res = await fetch('/api/v1/posts');
-            const data = await res.json();
-            setPosts(data);
-        }
-
-        getPosts();
-    }, [])
-
+    const { posts, error } = useGetPosts();
     const renderPosts = posts => {
         return(
             <ul>
@@ -39,7 +28,12 @@ const Portfolios = () => {
         <BaseLayout>
             <BasePage>
                 <h1>Hi I'm the Portfolios page!</h1>
-                {renderPosts(posts)}
+                {posts && renderPosts(posts)}
+                {error && 
+                    <div className="alert alert-danger">
+                        {error.message}
+                    </div>
+                }
             </BasePage>
         </BaseLayout>
     )
