@@ -7,7 +7,7 @@ import {useGetPosts} from '@/actions'
 
 const Portfolios = () => {
 
-    const { posts, error } = useGetPosts();
+    const { posts, error, loading } = useGetPosts();
     const renderPosts = posts => {
         return(
             <ul>
@@ -28,6 +28,9 @@ const Portfolios = () => {
         <BaseLayout>
             <BasePage>
                 <h1>Hi I'm the Portfolios page!</h1>
+                {loading && 
+                    <p>Loading data ...</p>
+                }
                 {posts && renderPosts(posts)}
                 {error && 
                     <div className="alert alert-danger">
