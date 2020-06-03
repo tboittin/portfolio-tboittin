@@ -3,7 +3,6 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem
 } from 'reactstrap';
@@ -21,13 +20,15 @@ const BSNavLink = props => {
     )
 }
 
-const BSNavBrand = () =>{
-    return(
-        <Link href="/">
-            <a className="navbar-brand port-navbar-brand">Thomas Boittin</a>
-        </Link>
-    )
-}
+const BSNavBrand = () =>
+    <Link href="/">
+        <a className="navbar-brand port-navbar-brand">Thomas Boittin</a>
+    </Link>
+
+
+const LoginLink = () => <span className="nav-link port-navbar-link clickable">Login</span>
+
+const LogoutLink = () => <span className="nav-link port-navbar-link clickable">Logout</span>
 
 const Header = () => {
     
@@ -60,6 +61,14 @@ const Header = () => {
                         </NavItem>
                         <NavItem className="port-navbar-item">
                             <BSNavLink href="/cv" title="CV" />
+                        </NavItem>
+                    </Nav>
+                    <Nav navbar>
+                        <NavItem className="port-navbar-item">
+                            <LoginLink />
+                        </NavItem>
+                        <NavItem className="port-navbar-item">
+                            <LogoutLink />
                         </NavItem>
                     </Nav>
                 </Collapse>
