@@ -5,8 +5,20 @@ import BasePage from '@/components/BasePage'
 import axios from 'axios'
 
 import Link from 'next/link'
+import { useEffect } from 'react'
 
 const Portfolios = ({posts}) => {
+
+    useEffect(() => {
+        async function getPosts() {
+            const res = await fetch('/api/v1/posts');
+            const data = await res.json();
+            debugger;
+        }
+
+        getPosts();
+    }, [])
+
     const renderPosts = posts => {
         return(
             <ul>
