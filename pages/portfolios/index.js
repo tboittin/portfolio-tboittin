@@ -3,15 +3,15 @@ import BaseLayout from '@/components/layout/BaseLayout'
 import BasePage from '@/components/BasePage'
 
 import Link from 'next/link'
-import {useGetPosts} from '@/actions'
+import {useGetData} from '@/actions'
 
 const Portfolios = () => {
 
-    const { posts, error, loading } = useGetPosts();
-    const renderPosts = posts => {
+    const { data, error, loading } = useGetData('/api/v1/posts');
+    const renderPosts = data => {
         return(
             <ul>
-                {posts.map(post=>
+                {data.map(post=>
                     <li key={post.id} style={{'fontSize':'20px'}}>
                         <Link as={'/portfolios/' + post.id} href='/portfolios/[id]'>
                             <a>
@@ -31,7 +31,7 @@ const Portfolios = () => {
                 {loading && 
                     <p>Loading data ...</p>
                 }
-                {posts && renderPosts(posts)}
+                {data && renderPosts(data)}
                 {error && 
                     <div className="alert alert-danger">
                         {error.message}
