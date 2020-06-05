@@ -3,11 +3,13 @@ import BaseLayout from '@/components/layout/BaseLayout'
 import BasePage from '@/components/BasePage'
 
 import Link from 'next/link'
-import {useGetData} from '@/actions'
+import { useGetPosts } from '@/actions'
+
 
 const Portfolios = () => {
 
-    const { data, error, loading } = useGetData('/api/v1/posts');
+    const { data, error, loading } = useGetPosts();
+
     const renderPosts = data => {
         return(
             <ul>
