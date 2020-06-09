@@ -29,7 +29,8 @@ const BSNavBrand = () =>
 const LoginLink = () => 
     <a href="/api/v1/login" className='nav-link port-navbar-link'>Login</a>
 
-const LogoutLink = () => <span className="nav-link port-navbar-link clickable">Logout</span>
+const LogoutLink = () =>
+    <a href="/api/v1/logout" className='nav-link port-navbar-link'>Logout</a>
 
 const Header = ({user, loading}) => {
     
