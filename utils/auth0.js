@@ -18,7 +18,7 @@ export default auth0;
 
 export const isAuthorized = (user, role) => {
   debugger
-  return (user && user['https://portfolio-tboittin.com' + '/roles'].includes(role))
+  return (user && user[process.env.AUTH0_NAMESPACE + '/roles'].includes(role))
 
 }
 
