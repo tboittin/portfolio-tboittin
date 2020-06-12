@@ -14,7 +14,13 @@ const auth0 = initAuth0({
   }
 });
 
-export default auth0
+export default auth0;
+
+export const isAuthorized = (user, role) => {
+  debugger
+  return (user && user['https://portfolio-tboittin.com' + '/roles'].includes(role))
+
+}
 
 export const authorizeUser = async (req, res) => {
   const session = await auth0.getSession(req);
