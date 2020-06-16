@@ -4,31 +4,23 @@ import BasePage from '@/components/BasePage';
 import Link from 'next/link';
 import { useGetUser } from '@/actions/user';
 import PortfolioApi from '@/lib/api/portfolios';
+import { PortfolioCard } from '@/components/PortfolioCards';
+import { Row, Col} from 'reactstrap'
 
 
 const Portfolios = ({portfolios}) => {
     const { data: dataU, loading: loadingU } = useGetUser();
-
-    const renderPortfolios = portfolios => {
-        return(
-            <ul>
-                {portfolios.map(portfolio=>
-                    <li key={portfolio._id} style={{'fontSize':'20px'}}>
-                        <Link as={'/portfolios/' + portfolio._id} href='/portfolios/[id]'>
-                            <a>
-                                {portfolio.title}
-                            </a>
-                        </Link>
-                    </li>
-                )}
-            </ul>
-        )
-    }
     
     return(
         <BaseLayout user={dataU} loading={loadingU}>
-            <BasePage>
-                {renderPortfolios(portfolios)}
+            <BasePage className="portfolio-page">
+                <Row>
+                    {portfolios.map(portfolio =>
+                        <Col key={portfolio._id} md="4">
+                            <PortfolioCard portfolio={portfolio} />
+                        </Col>
+                    )}
+                </Row>
             </BasePage>
         </BaseLayout>
     )
