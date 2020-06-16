@@ -13,7 +13,10 @@ const Portfolios = ({portfolios}) => {
     
     return(
         <BaseLayout user={dataU} loading={loadingU}>
-            <BasePage className="portfolio-page">
+            <BasePage 
+                className="portfolio-page"
+                header="Portfolios"
+            >
                 <Row>
                     {portfolios.map(portfolio =>
                         <Col key={portfolio._id} md="4">

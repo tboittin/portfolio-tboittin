@@ -32,7 +32,7 @@ const LoginLink = () =>
 const LogoutLink = () =>
     <a href="/api/v1/logout" className='nav-link port-navbar-link'>Logout</a>
 
-const Header = ({user, loading}) => {
+const Header = ({user, loading, className}) => {
     
     const [isOpen, setIsOpen] = useState(false)
     const toggle = () => setIsOpen(!isOpen)
@@ -40,7 +40,7 @@ const Header = ({user, loading}) => {
     return (
         <>
             <Navbar 
-                className="port-navbar port-default absolute" 
+                className={"port-navbar port-default absolute " + className} 
                 color="transparent" 
                 dark 
                 expand="md"
