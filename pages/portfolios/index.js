@@ -1,25 +1,22 @@
 
-import BaseLayout from '@/components/layout/BaseLayout'
-import BasePage from '@/components/BasePage'
+import BaseLayout from '@/components/layout/BaseLayout';
+import BasePage from '@/components/BasePage';
+import Link from 'next/link';
+import { useGetUser } from '@/actions/user';
+import PortfolioApi from '@/lib/api/portfolios';
 
-import Link from 'next/link'
-import { useGetPosts } from '@/actions'
-import { useGetUser } from '@/actions/user'
 
-
-const Portfolios = () => {
-
-    const { data, error, loading } = useGetPosts();
+const Portfolios = ({portfolios}) => {
     const { data: dataU, loading: loadingU } = useGetUser();
 
-    const renderPosts = data => {
+    const renderPortfolios = portfolios => {
         return(
             <ul>
-                {data.map(post=>
-                    <li key={post.id} style={{'fontSize':'20px'}}>
-                        <Link as={'/portfolios/' + post.id} href='/portfolios/[id]'>
+                {portfolios.map(portfolio=>
+                    <li key={portfolio._id} style={{'fontSize':'20px'}}>
+                        <Link as={'/portfolios/' + portfolio._id} href='/portfolios/[id]'>
                             <a>
-                                {post.title}
+                                {portfolio.title}
                             </a>
                         </Link>
                     </li>
@@ -31,19 +28,22 @@ const Portfolios = () => {
     return(
         <BaseLayout user={dataU} loading={loadingU}>
             <BasePage>
-                <h1>Hi I'm the Portfolios page!</h1>
-                {loading && 
-                    <p>Loading data ...</p>
-                }
-                {data && renderPosts(data)}
-                {error && 
-                    <div className="alert alert-danger">
-                        {error.message}
-                    </div>
-                }
+                {renderPortfolios(portfolios)}
             </BasePage>
         </BaseLayout>
     )
+}
+
+
+// this function is called during building time
+// improves performance of page,
+// it will create static page with dynamic data
+export async function getStaticProps() {
+    const json = await new PortfolioApi().getAll();
+    const portfolios = json.data;
+    return {
+        props: {portfolios}
+    }
 }
   
 export default Portfolios
