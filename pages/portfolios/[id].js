@@ -3,7 +3,7 @@ import BaseLayout from '@/components/layout/BaseLayout'
 import BasePage from '@/components/BasePage'
 
 import { useGetUser } from '@/actions/user'
-import PortfolioApi from '../../lib/api/portfolios'
+import PortfolioApi from '@/lib/api/portfolios'
 
 const Portfolio = ({portfolio}) => {
     const { data: dataU, loading: loadingU } = useGetUser();
