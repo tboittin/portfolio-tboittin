@@ -2,10 +2,34 @@
 
 import DatePicker from "react-datepicker";
 import { useForm } from "react-hook-form";
+import { useState, useEffect } from "react";
 
 
 const Portfolioform = ({onSubmit}) => {
-    const {register, handleSubmit } = useForm();
+    const {register, handleSubmit, setValue } = useForm();
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+
+    useEffect(() => {
+        register({name: 'startDate'});
+        register({name: 'endDate'});
+    }, [register])
+
+    const handleStartDate = (date) => {
+        setStartDate(date);
+        setValue('startDate', date);
+    }
+
+    const handleEndDate = (date) => {
+        setEndDate(date);
+        setValue('endDate', date);
+    }
+
+    const handleDateChange = (dateType, setDate) => date => {
+        
+        setValue(dateType, date);
+        setDate(date);
+    }
     
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -82,8 +106,8 @@ const Portfolioform = ({onSubmit}) => {
                     <DatePicker
                         showYearDropdown
                         dateFormat="dd/MM/yyyy"
-                        selected={new Date()} 
-                        onChange={() => {}} 
+                        selected={startDate} 
+                        onChange={handleDateChange('startDate', setStartDate)} 
                     />
                 </div>
             </div>
@@ -94,8 +118,8 @@ const Portfolioform = ({onSubmit}) => {
                     <DatePicker
                         showYearDropdown
                         dateFormat="dd/MM/yyyy"
-                        selected={new Date()} 
-                        onChange={() => {}} 
+                        selected={endDate} 
+                        onChange={handleDateChange('endDate', setEndDate)} 
                     />
                 </div>
             </div>
