@@ -1,4 +1,5 @@
 import Header from "@/components/shared/Header"
+import { ToastContainer, toast } from 'react-toastify';
 
 const BaseLayout = props => {
 
@@ -15,6 +16,7 @@ const BaseLayout = props => {
                     {children}
                 </div>
             </main>
+            <ToastContainer />
         </div>
     )
 }

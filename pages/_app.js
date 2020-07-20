@@ -3,6 +3,7 @@ import React from 'react'
 import "@/styles/main.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-datepicker/dist/react-datepicker.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = ({Component, pageProps}) => {
     return <Component {...pageProps}/>
