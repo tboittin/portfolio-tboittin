@@ -8,7 +8,6 @@ import {useCreatePortfolio} from '@/actions/portfolios';
 
 const PortfolioNew = ({user, loading: userLoading}) => {
   const [createPortfolio, {data, loading, error}] = useCreatePortfolio();
-  debugger
   const _createPortfolio = (data) => {
     createPortfolio(data)
   }
