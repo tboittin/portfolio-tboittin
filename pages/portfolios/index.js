@@ -7,11 +7,24 @@ import { PortfolioCard } from '@/components/PortfolioCards';
 import { Row, Col, Button} from 'reactstrap'
 import { useRouter } from 'next/router';
 import { isAuthorized } from '@/utils/auth0';
+import { useDeletePortfolio } from '@/actions/portfolios';
 
 
 const Portfolios = ({portfolios}) => {
     const { data: dataU, loading: loadingU } = useGetUser();
     const router = useRouter();
+    const [deletePortfolio, {data,error}] = useDeletePortfolio()
+    const _deletePortfolio = async (e, portfolioId) => {
+        // This function is to stop the propagation of the event,
+        // it it wasn't here, the onClick would trigger the Col onClick
+        // and lead to the id (detail) page of the element
+        // instead of the edit page
+        e.stopPropagation()
+        const isConfirmed = confirm('Are you sure you want to delete this portfolio?')
+        if(isConfirmed) {
+            await deletePortfolio(portfolioId)
+        }
+    }
 
     return(
         <BaseLayout user={dataU} loading={loadingU}>
@@ -45,7 +58,10 @@ const Portfolios = ({portfolios}) => {
                                     >
                                         Edit
                                     </Button>
-                                    <Button color="danger"> Delete </Button>
+                                    <Button
+                                        color="danger"
+                                        onClick={(e) => _deletePortfolio(e, portfolio._id)}
+                                    > Delete </Button>
                                 </>
                                 }
                             </PortfolioCard>
