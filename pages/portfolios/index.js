@@ -8,11 +8,14 @@ import { Row, Col, Button} from 'reactstrap'
 import { useRouter } from 'next/router';
 import { isAuthorized } from '@/utils/auth0';
 import { useDeletePortfolio } from '@/actions/portfolios';
+import { useState } from 'react';
 
 
-const Portfolios = ({portfolios}) => {
+
+const Portfolios = ({portfolios: initialPortfolios}) => {
     const { data: dataU, loading: loadingU } = useGetUser();
     const router = useRouter();
+    const [portfolios, setPortfolios] = useState(initialPortfolios)
     const [deletePortfolio, {data,error}] = useDeletePortfolio()
     const _deletePortfolio = async (e, portfolioId) => {
         // This function is to stop the propagation of the event,
@@ -23,6 +26,7 @@ const Portfolios = ({portfolios}) => {
         const isConfirmed = confirm('Are you sure you want to delete this portfolio?')
         if(isConfirmed) {
             await deletePortfolio(portfolioId)
+            setPortfolios(portfolios.filter(p => p._id !== portfolioId))
         }
     }
 
@@ -42,7 +46,8 @@ const Portfolios = ({portfolios}) => {
                             md="4"
                         >
                             <PortfolioCard portfolio={portfolio} >
-                                { dataU && isAuthorized(dataU, 'admin') &&
+                                { dataU && 
+                                // isAuthorized(dataU, 'admin') &&
                                     <>
                                     <Button 
                                         className="mr-2" 
