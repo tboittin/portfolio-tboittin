@@ -46,8 +46,7 @@ const Portfolios = ({portfolios: initialPortfolios}) => {
                             md="4"
                         >
                             <PortfolioCard portfolio={portfolio} >
-                                { dataU && 
-                                // isAuthorized(dataU, 'admin') &&
+                                { dataU && isAuthorized(dataU, 'admin') &&
                                     <>
                                     <Button 
                                         className="mr-2" 

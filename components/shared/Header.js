@@ -4,16 +4,20 @@ import {
   Navbar,
   NavbarToggler,
   Nav,
-  NavItem
+  NavItem,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
 } from 'reactstrap';
 import Link from 'next/link';
 
 
 const BSNavLink = props => {
-    const {title, href} = props
+    const {title, href, className=''} = props
     return (
         <Link href={href}>
-            <a className='nav-link port-navbar-link'>
+            <a className={'nav-link port-navbar-link '+ className}>
                 {title}
             </a>
         </Link>
@@ -32,6 +36,32 @@ const LoginLink = () =>
 const LogoutLink = () =>
     <a href="/api/v1/logout" className='nav-link port-navbar-link'>Logout</a>
 
+
+const AdminMenu = () => {
+    const [isOpen, setIsOpen] = useState(false)
+    return (
+        <Dropdown
+            className="port-navbar-link port-dropdown-menu"
+            nav
+            isOpen={isOpen}
+            toggle={()=> setIsOpen(!isOpen)}
+        >
+            <DropdownToggle className="port-dropdown-toggle" nav caret>
+                Admin
+            </DropdownToggle>
+            <DropdownMenu>
+                <DropdownItem>
+                    <BSNavLink 
+                        className="port-dropdown-item" 
+                        href="/portfolios/new" 
+                        title="Create Portfolio" 
+                    />
+                </DropdownItem>
+            </DropdownMenu>
+        </Dropdown>
+    )
+}
+
 const Header = ({user, loading, className}) => {
     
     const [isOpen, setIsOpen] = useState(false)
@@ -41,7 +71,7 @@ const Header = ({user, loading, className}) => {
         <>
             <Navbar 
                 className={"port-navbar port-default absolute " + className} 
-                dark 
+                // dark 
                 expand="md"
             >
                 <BSNavBrand />
@@ -80,9 +110,12 @@ const Header = ({user, loading, className}) => {
                         {!loading &&
                             <>
                                 {user &&
-                                    <NavItem className="port-navbar-item">
-                                        <LogoutLink />
-                                    </NavItem>
+                                    <>
+                                        <AdminMenu />
+                                        <NavItem className="port-navbar-item">
+                                            <LogoutLink />
+                                        </NavItem>
+                                    </>
                                 }
                                 {!user &&
                                     <NavItem className="port-navbar-item">
