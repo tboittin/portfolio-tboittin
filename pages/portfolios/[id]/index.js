@@ -19,13 +19,6 @@ const Portfolio = ({portfolio}) => {
     )
 }
 
-// export async function getServerSideProps({query}) {
-//     const json = await new PortfolioApi().getById(query.id);
-//     const portfolio = json.data;
-
-//     return {props: {portfolio}}
-// }
-
 export async function getStaticPaths() {
     const json = await new PortfolioApi().getAll();
     const portfolios = json.data;
