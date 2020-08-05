@@ -1,14 +1,23 @@
 
 import BaseLayout from '@/components/layout/BaseLayout';
-import BasePage from '@/components/BasePage'
-import withAuth from '@/hoc/withAuth'
+import BasePage from '@/components/BasePage';
+import withAuth from '@/hoc/withAuth';
+import {Editor} from 'slate-simple-editor';
 
 
 const BlogEditor = ({user, loading}) => {
+
+  const saveBlog = (data) => {
+    console.log(data)
+  }
+
   return (
     <BaseLayout user={user} loading={loading}>
-      <BasePage header="BLOG EDITOR">
-        <h1>Welcome</h1>
+      <BasePage>
+        <Editor 
+          header="Hello World"
+          onSave = {saveBlog}
+        />
       </BasePage>
     </BaseLayout>
   )
