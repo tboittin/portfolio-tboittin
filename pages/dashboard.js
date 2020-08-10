@@ -1,13 +1,19 @@
 import BaseLayout from "@/components/layout/BaseLayout";
 import BasePage from "@/components/BasePage";
-import auth0, {withAuth} from "utils/auth0";
-import {Row, Col} from 'reactstrap';
+import auth0, { withAuth } from "utils/auth0";
+import { Row, Col } from "reactstrap";
 import Masthead from "components/shared/Masthead";
 import BlogApi from "lib/api/blogs";
 import Link from "next/link";
-import PortButtonDropdown from 'components/shared/Dropdown';
+import PortButtonDropdown from "components/shared/Dropdown";
+import { useUpdateBlog } from "actions/blogs";
 
 const Dashboard = ({ user, blogs }) => {
+  const [updateBlog] = useUpdateBlog();
+
+  const changeBlogStatus = async (blogId, status) => {
+    await updateBlog(blogId, { status });
+  };
 
   const createOption = (blogStatus) => {
     return blogStatus === "draft"
@@ -16,15 +22,28 @@ const Dashboard = ({ user, blogs }) => {
   };
 
   const createOptions = (blog) => {
-
-    const option = createOption(blog.status)
+    const option = createOption(blog.status);
 
     return [
-      {key: blog._id+'-published', text: option.view, handlers: {onClick: () => {alert('Changing status to -  '+option.value)}}},
-      {key: blog._id+'-delete', text: 'Delete', handlers: {onClick: () => {alert('Clicking Delete '+blog._id)}}}
-    ]
-  }
-  
+      {
+        key: blog._id + "-published",
+        text: option.view,
+        handlers: {
+          onClick: () => changeBlogStatus(blog._id, option.value),
+        },
+      },
+      {
+        key: blog._id + "-delete",
+        text: "Delete",
+        handlers: {
+          onClick: () => {
+            alert("Clicking Delete " + blog._id);
+          },
+        },
+      },
+    ];
+  };
+
   const renderBlogs = (blogs, status) => (
     <ul className="user-blogs-list">
       {blogs
@@ -39,21 +58,19 @@ const Dashboard = ({ user, blogs }) => {
         ))}
     </ul>
   );
-  
+
   return (
     <BaseLayout navClass="transparent" user={user} loading={false}>
-      <Masthead 
-        imagePath="/images/home-bg.jpg"
-      />
+      <Masthead imagePath="/images/home-bg.jpg" />
       <BasePage className="blog-user-page">
         <Row>
           <Col md="6" className="mx-auto text-center">
             <h2 className="blog-status-title"> Published Blogs </h2>
-            {renderBlogs(blogs, 'published')}
+            {renderBlogs(blogs, "published")}
           </Col>
           <Col md="6" className="mx-auto text-center">
             <h2 className="blog-status-title"> Draft Blogs </h2>
-            {renderBlogs(blogs, 'draft')}
+            {renderBlogs(blogs, "draft")}
           </Col>
         </Row>
       </BasePage>
@@ -61,10 +78,10 @@ const Dashboard = ({ user, blogs }) => {
   );
 };
 
-export const getServerSideProps =  withAuth(async({req,res}) => {
-  const {accessToken} = await auth0.getSession(req);
+export const getServerSideProps = withAuth(async ({ req, res }) => {
+  const { accessToken } = await auth0.getSession(req);
   const json = await new BlogApi(accessToken).getByUser();
-  return {blogs: json.data}
-})('admin');
+  return { blogs: json.data };
+})("admin");
 
 export default Dashboard;
