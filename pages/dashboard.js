@@ -1,10 +1,12 @@
 import BaseLayout from "@/components/layout/BaseLayout";
 import BasePage from "@/components/BasePage";
-import {withAuth} from "utils/auth0";
+import auth0, {withAuth} from "utils/auth0";
 import {Row, Col} from 'reactstrap';
 import Masthead from "components/shared/Masthead";
+import BlogApi from "lib/api/blogs";
 
-const Dashboard = ({ user, loading }) => {
+const Dashboard = ({ user, blogs }) => {
+  debugger
   return (
     <BaseLayout navClass="transparent" user={user} loading={false}>
       <Masthead 
@@ -24,6 +26,10 @@ const Dashboard = ({ user, loading }) => {
   );
 };
 
-export const getServerSideProps =  withAuth()('admin');
+export const getServerSideProps =  withAuth(async({req,res}) => {
+  const {accessToken} = await auth0.getSession(req);
+  const json = await new BlogApi(accessToken).getByUser();
+  return {blogs: json.data}
+})('admin');
 
 export default Dashboard;
