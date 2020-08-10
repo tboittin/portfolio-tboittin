@@ -1,18 +1,22 @@
 import BaseLayout from "@/components/layout/BaseLayout";
 import BasePage from "@/components/BasePage";
-import auth0, { withAuth } from "utils/auth0";
+import withAuth from "hoc/withAuth";
 import { Row, Col } from "reactstrap";
 import Masthead from "components/shared/Masthead";
-import BlogApi from "lib/api/blogs";
 import Link from "next/link";
 import PortButtonDropdown from "components/shared/Dropdown";
-import { useUpdateBlog } from "actions/blogs";
+import { useUpdateBlog, useGetUserBlogs } from "actions/blogs";
+import { toast } from "react-toastify";
 
-const Dashboard = ({ user, blogs }) => {
+const Dashboard = ({ user, loading }) => {
   const [updateBlog] = useUpdateBlog();
+  const {data: blogs, mutate} = useGetUserBlogs();
 
   const changeBlogStatus = async (blogId, status) => {
-    await updateBlog(blogId, { status });
+    await updateBlog(blogId, { status })
+    // mutate refetch useGetUserBlogs so we don't need to refresh to see the update
+      .then(() => mutate())
+      .catch(() => toast.error('Something went wrong...'));
   };
 
   const createOption = (blogStatus) => {
@@ -46,7 +50,7 @@ const Dashboard = ({ user, blogs }) => {
 
   const renderBlogs = (blogs, status) => (
     <ul className="user-blogs-list">
-      {blogs
+      {blogs && blogs
         .filter((blog) => blog.status === status)
         .map((blog) => (
           <li key={blog._id}>
@@ -60,7 +64,7 @@ const Dashboard = ({ user, blogs }) => {
   );
 
   return (
-    <BaseLayout navClass="transparent" user={user} loading={false}>
+    <BaseLayout navClass="transparent" user={user} loading={loading}>
       <Masthead imagePath="/images/home-bg.jpg" />
       <BasePage className="blog-user-page">
         <Row>
@@ -78,10 +82,4 @@ const Dashboard = ({ user, blogs }) => {
   );
 };
 
-export const getServerSideProps = withAuth(async ({ req, res }) => {
-  const { accessToken } = await auth0.getSession(req);
-  const json = await new BlogApi(accessToken).getByUser();
-  return { blogs: json.data };
-})("admin");
-
-export default Dashboard;
+export default withAuth(Dashboard)('admin');
