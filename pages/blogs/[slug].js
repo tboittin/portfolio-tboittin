@@ -1,17 +1,38 @@
 
 import BaseLayout from '@/components/layout/BaseLayout';
 import BasePage from '@/components/BasePage'
-import { useGetUser } from '@/actions/user'
+import { useGetUser } from 'actions/user'
+import BlogApi from 'lib/api/blogs';
+import { Row, Col } from 'reactstrap';
+import { SlateView } from 'slate-simple-editor';
 
-const BlogDetail = () => {
+const BlogDetail = ({blog}) => {
   const {data, loading } = useGetUser();
   return (
     <BaseLayout user={data} loading={loading}>
-      <BasePage>
-        <h1>I am About Page</h1>
+      <BasePage className="slate-container">
+        <Row>
+          <Col md={{size: 10, offset:1}}>
+            <SlateView 
+              initialContent={blog.content}
+            />
+          </Col>
+        </Row>
       </BasePage>
     </BaseLayout>
   )
+}
+
+export async function getStaticPaths() {
+  const json = await new BlogApi().getAll();
+  const blogs = json.data;
+  const paths = blogs.map((b) => ({ params: { slug: b.slug } }));
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({params}) {
+  const json = await new BlogApi().getBySlug(params.slug);
+  return {props: {blog: json.data}}
 }
 
 export default BlogDetail;
