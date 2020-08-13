@@ -1,24 +1,37 @@
+import BaseLayout from "@/components/layout/BaseLayout";
 
-import BaseLayout from '@/components/layout/BaseLayout'
+import { Container, Row, Col } from "reactstrap";
 
-import { Container, Row, Col } from 'reactstrap'
+import Typed from "react-typed";
 
-import Typed from 'react-typed';
+import { useGetUser } from "@/actions/user";
+import { useState, useRef, useEffect } from "react";
 
-import { useGetUser } from '@/actions/user'
-
-const ROLES = ['Developer', 'Tech Lover', 'Team Player', 'React.js', 'Next.js']
+const ROLES = ["Developer", "Tech Lover", "Team Player", "React.js", "Next.js"];
 
 const Index = () => {
+  const { data, loading } = useGetUser();
+  const [isFlipping, setisFlipping] = useState(false);
+  const flipInterval = useRef();
 
-  const {data, loading } = useGetUser();
+  useEffect(() => {
+    startAnimation();
+    return () => flipInterval.current && clearInterval(flipInterval.current)
+  }, [])
 
-  return(
-    <BaseLayout 
+  const startAnimation = () => {
+    flipInterval.current = setInterval(() => {
+      setisFlipping((prevFlipping) => !prevFlipping)
+    }, 30000);
+  }
+
+  return (
+    <BaseLayout
       user={data}
       loading={loading}
       navClass="transparent"
-      className="cover">
+      className={"cover"+ (isFlipping ? ' cover-orange' : ' cover-blue')}
+    >
       <div className="main-section">
         <div className="background-image">
           <img src="/images/background-index.png" />
@@ -28,7 +41,19 @@ const Index = () => {
           <Row>
             <Col md="6">
               <div className="hero-section">
-                <div className={`flipper`}>
+                <div className={`flipper`+ (isFlipping ? ' isFlipping' : '') }>
+                  <div className="front">
+                    <div className="hero-section-content">
+                      <h2> Full Stack Web Developer </h2>
+                      <div className="hero-section-content-intro">
+                        Have a look at my portfolio and job history.
+                      </div>
+                    </div>
+                    <img className="image" src="/images/section-1.png" />
+                    <div className="shadow-custom">
+                      <div className="shadow-inner"> </div>
+                    </div>
+                  </div>
                   <div className="back">
                     <div className="hero-section-content">
                       <h2> Full Stack Web Developer </h2>
@@ -36,8 +61,8 @@ const Index = () => {
                         Have a look at my portfolio and job history.
                       </div>
                     </div>
-                    <img className="image" src="/images/section-1.png"/>
-                    <div className="shadow-custom">
+                    <img className="image" src="/images/section-2.png" />
+                    <div className="shadow-custom-orange">
                       <div className="shadow-inner"> </div>
                     </div>
                   </div>
@@ -47,12 +72,13 @@ const Index = () => {
             <Col md="6" className="hero-welcome-wrapper">
               <div className="hero-welcome-text">
                 <h1>
-                  Welcome to the portfolio website of Filip Jerga.
-                  Get informed, collaborate and discover projects I was working on through the years!
+                  Welcome to the portfolio website of Filip Jerga. Get informed,
+                  collaborate and discover projects I was working on through the
+                  years!
                 </h1>
               </div>
               <Typed
-                loop 
+                loop
                 strings={ROLES}
                 typeSpeed={70}
                 backSpeed={70}
@@ -61,19 +87,16 @@ const Index = () => {
                 showCursor
                 className="self-typed"
                 cursorChar="|"
-                >
-              </Typed>
+              ></Typed>
               <div className="hero-welcome-bio">
-                <h1>
-                  Let's take a look on my work.
-                </h1>
+                <h1>Let's take a look on my work.</h1>
               </div>
             </Col>
           </Row>
         </Container>
       </div>
     </BaseLayout>
-  )
-}
-  
-export default Index
+  );
+};
+
+export default Index;
