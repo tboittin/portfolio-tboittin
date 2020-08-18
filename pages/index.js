@@ -8,7 +8,8 @@ import { useGetUser } from "@/actions/user";
 import { useState, useRef, useEffect } from "react";
 import BasePage from "components/BasePage";
 
-const ROLES = ["Developer", "Tech Lover", "Team Player", "React.js", "Next.js"];
+const INTRO = ["Welcome to Thomas Boittin's website ! I put here my projects and some cool stuff !"]
+const ROLES = ['React.js dev', 'Next.js dev','Fast Learner', 'Web enthousiast', 'Casual Gamer', 'Nerd']
 
 const Index = () => {
   const { data, loading } = useGetUser();
@@ -47,11 +48,24 @@ const Index = () => {
                     className={`flipper` + (isFlipping ? " isFlipping" : "")}
                   >
                     <div className="front">
+                      {/* TODO make this card as components */}
                       <div className="hero-section-content">
-                        <h2> Full Stack Web Developer </h2>
+                        {/* <h2> Full Stack Web Developer </h2>
                         <div className="hero-section-content-intro">
                           Have a look at my portfolio and job history.
-                        </div>
+                        </div> */}
+                        <h2> I'm a </h2>
+                        <Typed
+                          loop
+                          strings={ROLES}
+                          typeSpeed={70}
+                          backSpeed={70}
+                          backDelay={1000}
+                          loopCount={0}
+                          className="self-typed"
+                          showCursor
+                          cursorChar="|"
+                        ></Typed>
                       </div>
                       <img className="image" src="/images/section-1.png" />
                       <div className="shadow-custom">
@@ -60,10 +74,22 @@ const Index = () => {
                     </div>
                     <div className="back">
                       <div className="hero-section-content">
-                        <h2> Full Stack Web Developer </h2>
+                        {/* <h2> Full Stack Web Developer </h2>
                         <div className="hero-section-content-intro">
                           Have a look at my portfolio and job history.
-                        </div>
+                        </div> */}
+                        <h2> I'm a </h2>
+                        <Typed
+                          loop
+                          strings={ROLES}
+                          typeSpeed={70}
+                          backSpeed={70}
+                          backDelay={1000}
+                          loopCount={0}
+                          className="self-typed"
+                          showCursor
+                          cursorChar="|"
+                        ></Typed>
                       </div>
                       <img className="image" src="/images/section-2.png" />
                       <div className="shadow-custom-orange">
@@ -75,13 +101,21 @@ const Index = () => {
               </Col>
               <Col md="6" className="hero-welcome-wrapper">
                 <div className="hero-welcome-text">
-                  <h1>
+                  {/* <h1>
                     Welcome to the portfolio website of Filip Jerga. Get
                     informed, collaborate and discover projects I was working on
                     through the years!
-                  </h1>
+                  </h1> */}
+                  <Typed
+                  strings={INTRO}
+                  typeSpeed={70}
+                  loopCount={1}
+                  className="self-typed"
+                  cursorChar="|"
+                >
+                </Typed>
                 </div>
-                <Typed
+                {/* <Typed
                   loop
                   strings={ROLES}
                   typeSpeed={70}
@@ -91,7 +125,7 @@ const Index = () => {
                   showCursor
                   className="self-typed"
                   cursorChar="|"
-                ></Typed>
+                ></Typed> */}
                 <div className="hero-welcome-bio">
                   <h1>Let's take a look on my work.</h1>
                 </div>
