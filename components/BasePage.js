@@ -40,6 +40,8 @@ const BasePage = (props) => {
           content={process.env.BASE_URL + "/images/section-1.png"}
           key="og:image"
         />
+        <link href="https://fonts.googleapis.com/css?family=Monserrat:400,700" rel="stylesheet"/>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
         <link
           rel="canonical"
           href={process.env.BASE_URL + (canonicalPath ? canonicalPath : router.asPath)} 
