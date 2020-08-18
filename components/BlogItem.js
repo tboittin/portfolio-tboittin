@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import moment from 'moment';
-import localization from 'moment/locale/fr';
 
 // setup the fr parameter in moment.js to get the date format right
+import localization from 'moment/locale/fr';
 moment.updateLocale('fr', localization);
 
 const BlogItem = ({blog}) => (

@@ -1,11 +1,13 @@
 import { Container } from "reactstrap";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import React from "react";
 
-const PageHeader = ({header}) => 
+const PageHeader = ({ header }) => (
   <div className="page-header">
     <h1 className="page-header-title">{header}</h1>
   </div>
+);
 
 const BasePage = (props) => {
   const router = useRouter();
@@ -21,6 +23,9 @@ const BasePage = (props) => {
   } = props;
 
   const pageType = indexPage ? "index-page" : "base-page";
+
+  const Wrapper = noWrapper ? React.Fragment : Container;
+
   return (
     <>
       <Head>
@@ -60,18 +65,10 @@ const BasePage = (props) => {
         ></link>
       </Head>
       <div className={pageType + " " + className}>
-        {noWrapper && (
-          <>
-            {header && <PageHeader header={header}/>}
-            {children}
-          </>
-        )}
-        {!noWrapper && (
-          <Container>
-            {header && <PageHeader header={header}/>}
-            {children}
-          </Container>
-        )}
+        <Wrapper>
+          {header && <PageHeader header={header} />}
+          {children}
+        </Wrapper>
       </div>
     </>
   );

@@ -4,10 +4,11 @@ import BasePage from "@/components/BasePage";
 import { useGetUser } from "@/actions/user";
 import PortfolioApi from "@/lib/api/portfolios";
 
+import { formatDate } from "helpers/functions";
+
 const Portfolio = ({ portfolio }) => {
   const { data: dataU, loading: loadingU } = useGetUser();
 
-  // TODO: Provide styling
   return (
     <BaseLayout user={dataU} loading={loadingU} navClass="transparent">
       <BasePage
@@ -21,13 +22,22 @@ const Portfolio = ({ portfolio }) => {
             <main role="main" class="inner page-cover">
               <h1 class="cover-heading">{portfolio.title}</h1>
               <p class="lead dates">
-                {portfolio.startDate}
-                {portfolio.endDate ? " - " + portfolio.endDate : ""}{" "}
+                {formatDate(portfolio.startDate, "LL")}
+                {portfolio.endDate
+                  ? " - " + formatDate(portfolio.endDate, "LL")
+                  : " - ongoing"}
               </p>
-              <p class="lead info mb-0">jobTitle | company | location</p>
-              <p class="lead">description</p>
+              <p class="lead info mb-0">
+                {portfolio.jobTitle} | {portfolio.company} |{" "}
+                {portfolio.location}
+              </p>
+              <p class="lead">{portfolio.description}</p>
               <p class="lead">
-                <a href="#" class="btn btn-lg btn-secondary">
+                <a
+                  href={portfolio.companyWebsite}
+                  target="_"
+                  class="btn btn-lg btn-secondary"
+                >
                   Visit Company
                 </a>
               </p>
