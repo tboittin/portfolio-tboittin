@@ -11,7 +11,9 @@ const BasePage = (props) => {
     title = "Website",
     children,
     metaDescription = "My name is Thomas Boittin and I am a freelance web-developer. Have a look at my work !",
+    canonicalPath
   } = props;
+
   const pageType = indexPage ? "index-page" : "base-page";
   return (
     <>
@@ -38,6 +40,10 @@ const BasePage = (props) => {
           content={process.env.BASE_URL + "/images/section-1.png"}
           key="og:image"
         />
+        <link
+          rel="canonical"
+          href={process.env.BASE_URL + (canonicalPath ? canonicalPath : router.asPath)} 
+        ></link>
       </Head>
       <div className={pageType + " " + className}>
         <Container>
