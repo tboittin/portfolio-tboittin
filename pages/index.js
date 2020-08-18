@@ -8,8 +8,17 @@ import { useGetUser } from "@/actions/user";
 import { useState, useRef, useEffect } from "react";
 import BasePage from "components/BasePage";
 
-const INTRO = ["Welcome to Thomas Boittin's website ! I put here my projects and some cool stuff !"]
-const ROLES = ['React.js dev', 'Next.js dev','Fast Learner', 'Web enthousiast', 'Casual Gamer', 'Nerd']
+const INTRO = [
+  "Welcome to Thomas Boittin's website ! I put here my projects and some cool stuff !",
+];
+const ROLES = [
+  "React.js dev",
+  "Next.js dev",
+  "Fast Learner",
+  "Web enthousiast",
+  "Casual Gamer",
+  "Nerd",
+];
 
 const Index = () => {
   const { data, loading } = useGetUser();
@@ -48,50 +57,54 @@ const Index = () => {
                     className={`flipper` + (isFlipping ? " isFlipping" : "")}
                   >
                     <div className="front">
-                      {/* TODO make this card as components */}
-                      <div className="hero-section-content">
-                        {/* <h2> Full Stack Web Developer </h2>
+                      <div className="image" className="image image-1">
+                        <div className="hero-section-content">
+                          {/* <h2> Full Stack Web Developer </h2>
                         <div className="hero-section-content-intro">
                           Have a look at my portfolio and job history.
                         </div> */}
-                        <h2> I'm a </h2>
-                        <Typed
-                          loop
-                          strings={ROLES}
-                          typeSpeed={70}
-                          backSpeed={70}
-                          backDelay={1000}
-                          loopCount={0}
-                          className="self-typed"
-                          showCursor
-                          cursorChar="|"
-                        ></Typed>
+                          <h2> I'm a </h2>
+                          <Typed
+                            loop
+                            strings={ROLES}
+                            typeSpeed={70}
+                            backSpeed={70}
+                            backDelay={1000}
+                            loopCount={0}
+                            className="self-typed"
+                            showCursor
+                            cursorChar="|"
+                          ></Typed>
+                        </div>
                       </div>
-                      <img className="image" src="/images/section-1.png" />
+
+                      {/* TODO make this card as components */}
+
                       <div className="shadow-custom">
                         <div className="shadow-inner"> </div>
                       </div>
                     </div>
                     <div className="back">
-                      <div className="hero-section-content">
-                        {/* <h2> Full Stack Web Developer </h2>
+                      <div className="image" className="image image-2">
+                        <div className="hero-section-content">
+                          {/* <h2> Full Stack Web Developer </h2>
                         <div className="hero-section-content-intro">
                           Have a look at my portfolio and job history.
                         </div> */}
-                        <h2> I'm a </h2>
-                        <Typed
-                          loop
-                          strings={ROLES}
-                          typeSpeed={70}
-                          backSpeed={70}
-                          backDelay={1000}
-                          loopCount={0}
-                          className="self-typed"
-                          showCursor
-                          cursorChar="|"
-                        ></Typed>
+                          <h2> I'm a </h2>
+                          <Typed
+                            loop
+                            strings={ROLES}
+                            typeSpeed={70}
+                            backSpeed={70}
+                            backDelay={1000}
+                            loopCount={0}
+                            className="self-typed"
+                            showCursor
+                            cursorChar="|"
+                          ></Typed>
+                        </div>
                       </div>
-                      <img className="image" src="/images/section-2.png" />
                       <div className="shadow-custom-orange">
                         <div className="shadow-inner"> </div>
                       </div>
@@ -107,13 +120,12 @@ const Index = () => {
                     through the years!
                   </h1> */}
                   <Typed
-                  strings={INTRO}
-                  typeSpeed={70}
-                  loopCount={1}
-                  className="self-typed"
-                  cursorChar="|"
-                >
-                </Typed>
+                    strings={INTRO}
+                    typeSpeed={70}
+                    loopCount={1}
+                    className="self-typed"
+                    cursorChar="|"
+                  ></Typed>
                 </div>
                 {/* <Typed
                   loop
