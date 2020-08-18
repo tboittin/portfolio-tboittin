@@ -2,16 +2,22 @@ import { Container } from "reactstrap";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
+const PageHeader = ({header}) => 
+  <div className="page-header">
+    <h1 className="page-header-title">{header}</h1>
+  </div>
+
 const BasePage = (props) => {
   const router = useRouter();
   const {
+    noWrapper,
     indexPage,
     className = "",
     header,
     title = "Website",
     children,
     metaDescription = "My name is Thomas Boittin and I am a freelance web-developer. Have a look at my work !",
-    canonicalPath
+    canonicalPath,
   } = props;
 
   const pageType = indexPage ? "index-page" : "base-page";
@@ -40,22 +46,32 @@ const BasePage = (props) => {
           content={process.env.BASE_URL + "/images/section-1.png"}
           key="og:image"
         />
-        <link href="https://fonts.googleapis.com/css?family=Monserrat:400,700" rel="stylesheet"/>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Monserrat:wght@300,400,700&display=swap"
+          rel="stylesheet"
+        />
         <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
         <link
           rel="canonical"
-          href={process.env.BASE_URL + (canonicalPath ? canonicalPath : router.asPath)} 
+          href={
+            process.env.BASE_URL +
+            (canonicalPath ? canonicalPath : router.asPath)
+          }
         ></link>
       </Head>
       <div className={pageType + " " + className}>
-        <Container>
-          {header && (
-            <div className="page-header">
-              <h1 className="page-header-title">{header}</h1>
-            </div>
-          )}
-          {children}
-        </Container>
+        {noWrapper && (
+          <>
+            {header && <PageHeader header={header}/>}
+            {children}
+          </>
+        )}
+        {!noWrapper && (
+          <Container>
+            {header && <PageHeader header={header}/>}
+            {children}
+          </Container>
+        )}
       </div>
     </>
   );
