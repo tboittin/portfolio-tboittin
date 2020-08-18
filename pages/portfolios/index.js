@@ -35,6 +35,7 @@ const Portfolios = ({portfolios: initialPortfolios}) => {
             <BasePage 
                 className="portfolio-page"
                 header="Portfolios"
+                title="Portfolio"
             >
                 <Row>
                     {portfolios.map(portfolio =>

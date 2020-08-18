@@ -8,9 +8,10 @@ import PortfolioApi from '@/lib/api/portfolios'
 const Portfolio = ({portfolio}) => {
     const { data: dataU, loading: loadingU } = useGetUser();
 
+    // TODO: Provide styling
     return (
         <BaseLayout user={dataU} loading={loadingU}>
-            <BasePage header="Portfolio Detail">
+            <BasePage header="Portfolio Detail" title={portfolio.title}>
                 {
                     JSON.stringify(portfolio)
                 }
