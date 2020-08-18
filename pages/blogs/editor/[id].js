@@ -17,7 +17,6 @@ const BlogUpdateEditor = ({ user, loading }) => {
   }
 
   if (error) {
-    debugger
     toast.error(error)
   }
 

@@ -8,7 +8,6 @@ import BlogItem from "components/BlogItem";
 
 const Blogs = ({blogs}) => {
   const { data, loading } = useGetUser();
-  debugger
   return (
     <BaseLayout
       navClass="transparent"
