@@ -19,4 +19,4 @@ const CV = () => {
     )
 }
   
-export default CV
+export default CV;

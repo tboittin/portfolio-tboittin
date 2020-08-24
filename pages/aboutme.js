@@ -23,7 +23,7 @@ const AboutMe = () => {
             <div className={``}>
               {/* TODO Change the description */}
               <p>
-                My name is Filip Jerga and I am an experienced software engineer
+                My name is Thomas and I am an experienced software engineer
                 and freelance developer.{" "}
               </p>
               <p>
