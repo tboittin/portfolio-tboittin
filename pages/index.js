@@ -51,7 +51,7 @@ const Index = () => {
 
           <Container>
             <Row>
-              <Col md="6">
+              <Col lg="6" xs="12">
                 <div className="hero-section">
                   <div
                     className={`flipper` + (isFlipping ? " isFlipping" : "")}
@@ -87,10 +87,6 @@ const Index = () => {
                     <div className="back">
                       <div className="image" className="image image-2">
                         <div className="hero-section-content">
-                          {/* <h2> Full Stack Web Developer </h2>
-                        <div className="hero-section-content-intro">
-                          Have a look at my portfolio and job history.
-                        </div> */}
                           <h2> I'm a </h2>
                           <Typed
                             loop
@@ -112,13 +108,8 @@ const Index = () => {
                   </div>
                 </div>
               </Col>
-              <Col md="6" className="hero-welcome-wrapper">
+              <Col lg="6" xs="12" className="hero-welcome-wrapper">
                 <div className="hero-welcome-text">
-                  {/* <h1>
-                    Welcome to the portfolio website of Filip Jerga. Get
-                    informed, collaborate and discover projects I was working on
-                    through the years!
-                  </h1> */}
                   <Typed
                     strings={INTRO}
                     typeSpeed={70}
@@ -127,17 +118,6 @@ const Index = () => {
                     cursorChar="|"
                   ></Typed>
                 </div>
-                {/* <Typed
-                  loop
-                  strings={ROLES}
-                  typeSpeed={70}
-                  backSpeed={70}
-                  backDelay={1000}
-                  loopCount={0}
-                  showCursor
-                  className="self-typed"
-                  cursorChar="|"
-                ></Typed> */}
                 <div className="hero-welcome-bio">
                   <h1>Let's take a look on my work.</h1>
                 </div>

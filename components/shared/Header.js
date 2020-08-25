@@ -92,10 +92,10 @@ const Header = ({ user, loading, className }) => {
           className={
             "port-navbar port-default absolute " +
             className +
-            ((width<768 && isOpen) ? " is-open" : " is-closed")
+            ((width<992 && isOpen) ? " is-open" : " is-closed")
           }
           dark
-          expand="md"
+          expand="lg"
         >
           <BSNavBrand />
           <NavbarToggler onClick={toggle} />
