@@ -12,8 +12,8 @@ const Blogs = ({blogs}) => {
     <BaseLayout
       navClass="transparent"
       className="blog-listing-page"
-      user={null}
-      loading={false}
+      user={data}
+      loading={loading}
     >
       <Masthead imagePath="/images/home-bg.jpg">
         <h1>Fresh Blogs</h1>
