@@ -52,7 +52,7 @@ const BasePage = (props) => {
           key="og:image"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Monserrat:wght@300,400,700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap"
           rel="stylesheet"
         />
         <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
