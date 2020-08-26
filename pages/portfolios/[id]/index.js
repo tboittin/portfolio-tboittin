@@ -6,6 +6,7 @@ import PortfolioApi from "@/lib/api/portfolios";
 
 import { formatDate } from "helpers/functions";
 import { useRouter } from "next/router";
+import { Container } from "reactstrap";
 
 const Portfolio = ({ portfolio }) => {
   const { data: dataU, loading: loadingU } = useGetUser();
@@ -24,29 +25,25 @@ const Portfolio = ({ portfolio }) => {
         metaDescription={portfolio.description}
       >
         <div className="portfolio-detail">
-          <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
+          <div className="cover-container d-flex h-100 w-100 p-3 mx-auto flex-column">
             <main role="main" className="inner page-cover">
               {!router.isFallback && (
                 <>
                   <h1 className="cover-heading">{portfolio.title}</h1>
-                  <p className="lead dates">
-                    {formatDate(portfolio.startDate, "LL")}
-                    {portfolio.endDate
-                      ? " - " + formatDate(portfolio.endDate, "LL")
-                      : " - ongoing"}
-                  </p>
-                  <p className="lead info mb-0">
-                    {portfolio.jobTitle} | {portfolio.company} |{" "}
-                    {portfolio.location}
-                  </p>
-                  <p className="lead">{portfolio.description}</p>
+                  <Container>
+                    {portfolio.image &&
+                      <img src={'/upload/mockup/'+portfolio.image} className="w-50 text-center mb-2"/>
+                    }
+                  </Container>
+                  
+                  <p className="lead mx-5">{portfolio.description}</p>
                   <p className="lead">
                     <a
                       href={portfolio.companyWebsite}
                       target="_"
                       className="btn btn-lg btn-secondary"
                     >
-                      Visit Company
+                      Have a look !
                     </a>
                   </p>
                 </>
