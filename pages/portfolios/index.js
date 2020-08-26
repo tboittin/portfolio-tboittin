@@ -45,29 +45,30 @@ const Portfolios = ({portfolios: initialPortfolios}) => {
                                 router.push('/portfolios/[id]', '/portfolios/'+portfolio._id)
                             }}
                             md="4"
+                            className="mb-3"
                         >
                             <PortfolioCard portfolio={portfolio} >
                                 { dataU && isAuthorized(dataU, 'admin') &&
-                                    <>
-                                    <Button 
-                                        className="mr-2" 
-                                        color="warning"
-                                        onClick={(e) => {
-                                            // This function is to stop the propagation of the event,
-                                            // it it wasn't here, the onClick would trigger the Col onClick
-                                            // and lead to the id (detail) page of the element
-                                            // instead of the edit page
-                                            e.stopPropagation();
-                                            router.push('/portfolios/[id]/edit','/portfolios/'+portfolio._id+'/edit')
-                                        }}
-                                    >
-                                        Edit
-                                    </Button>
-                                    <Button
-                                        color="danger"
-                                        onClick={(e) => _deletePortfolio(e, portfolio._id)}
-                                    > Delete </Button>
-                                </>
+                                    <div className="button-row">
+                                        <Button 
+                                            className="mr-2" 
+                                            color="warning"
+                                            onClick={(e) => {
+                                                // This function is to stop the propagation of the event,
+                                                // it it wasn't here, the onClick would trigger the Col onClick
+                                                // and lead to the id (detail) page of the element
+                                                // instead of the edit page
+                                                e.stopPropagation();
+                                                router.push('/portfolios/[id]/edit','/portfolios/'+portfolio._id+'/edit')
+                                            }}
+                                        >
+                                            Edit
+                                        </Button>
+                                        <Button
+                                            color="danger"
+                                            onClick={(e) => _deletePortfolio(e, portfolio._id)}
+                                        > Delete </Button>
+                                    </div>
                                 }
                             </PortfolioCard>
                         </Col>
