@@ -1,12 +1,13 @@
 import BaseLayout from "@/components/layout/BaseLayout";
 
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 
 import Typed from "react-typed";
 
 import { useGetUser } from "@/actions/user";
 import { useState, useRef, useEffect } from "react";
 import BasePage from "components/BasePage";
+import Link from "next/link";
 
 const INTRO = [
   "Welcome to Thomas Boittin's website ! I put here my projects and some cool stuff !",
@@ -109,7 +110,7 @@ const Index = () => {
                 </div>
               </Col>
               <Col lg="6" xs="12" className="hero-welcome-wrapper">
-                <div className="hero-welcome-text">
+                <div className="hero-welcome-text h-50">
                   <Typed
                     strings={INTRO}
                     typeSpeed={70}
@@ -120,6 +121,16 @@ const Index = () => {
                 </div>
                 <div className="hero-welcome-bio">
                   <h1>Let's take a look at my work.</h1>
+                  <Link href="/portfolios">
+                    <Button
+                      color="success"
+                      size="lg"
+                      className="mt-3 mb-5"
+                      block
+                    >
+                      Portfolio
+                    </Button>
+                  </Link>
                 </div>
               </Col>
             </Row>
