@@ -1,7 +1,7 @@
 import BaseLayout from "@/components/layout/BaseLayout";
 import BasePage from "@/components/BasePage";
 import { useGetUser } from "@/actions/user";
-import { Row, Col} from 'reactstrap'
+import { Row, Col, Button} from 'reactstrap'
 import { useEffect } from "react";
 
 const About = () => {
@@ -28,9 +28,8 @@ const About = () => {
           <Col md="6">
             <div className="left-side">
               <h1 className={`title ` + createFadeInClass()}>Hello, Welcome</h1>
-              <h4 className={`subtitle ` + createFadeInClass()}>To About Page</h4>
               <p className={`subsubTitle ` + createFadeInClass()}>
-                Feel free to read short description about me.
+                Feel free to read this short description about me.
               </p>
             </div>
           </Col>
@@ -38,23 +37,20 @@ const About = () => {
             <div className={``}>
               {/* TODO Change the description */}
               <p>
-                My name is Filip Jerga and I am an experienced software engineer
-                and freelance developer.{" "}
+                Hi I'm Thomas Boittin, I am a React.js/Next.js front-end developer.
               </p>
               <p>
-                I have a Master's degree in Artificial Intelligence and several
-                years of experience working on a wide range of technologies and
-                projects from C++ development for ultrasound devices to modern
-                mobile and web applications in React and Angular.
+                I am an Agro-Economist Engineer who decided to learn and create web applications.
               </p>
               <p>
-                Throughout my career, I have acquired advanced technical
-                knowledge and the ability to explain programming topics clearly
-                and in detail to a broad audience. I invite you to take my
-                course, where I have put a lot of effort to explain web and
-                software engineering concepts in a detailed, hands-on and
-                understandable way.
+                I deciding to learn programing so I could create projects that emerge form my mind.
+                Also, this career allowed me to work while travelling around the world.
               </p>
+              <p>
+                My most recent work is with the EPFL+ECAL Lab, I made a React.js user interface 
+                in order to conduct a study on perception of Fake News.
+              </p>
+              <Button className="text-center w-100" href="http://www.epfl-ecal-lab.ch/work/trust-over-time-online-survey/" target="_blank">Have a look at this project !</Button>
             </div>
           </Col>
         </Row>
