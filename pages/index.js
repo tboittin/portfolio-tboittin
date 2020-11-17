@@ -123,9 +123,8 @@ const Index = () => {
                   <h1>Let's take a look at my work.</h1>
                   <Link href="/portfolios">
                     <Button
-                      color="success"
                       size="lg"
-                      className="mt-3 mb-5"
+                      className="mt-3 mb-5 button-index"
                       block
                     >
                       Portfolio
