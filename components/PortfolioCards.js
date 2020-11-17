@@ -11,10 +11,10 @@ export const PortfolioCard = ({ portfolio, children }) => (
         <CardBody>
           <p className="portfolio-card-city">{portfolio.location}</p>
           <CardTitle className="portfolio-card-title">
-            {portfolio.title}
+              {limitTextLength(portfolio.title, 30)}
           </CardTitle>
           <CardText className="portfolio-card-text">
-            {portfolio.description}
+              {limitTextLength(portfolio.description, 100)}
           </CardText>
           {children}
         </CardBody>
