@@ -15,7 +15,7 @@ import { useState } from 'react';
 const Portfolios = ({portfolios: initialPortfolios}) => {
     const { data: dataU, loading: loadingU } = useGetUser();
     const router = useRouter();
-    const [portfolios, setPortfolios] = useState(initialPortfolios)
+    const [portfolios, setPortfolios] = useState(initialPortfolios);
     const [deletePortfolio, {data,error}] = useDeletePortfolio()
     const _deletePortfolio = async (e, portfolioId) => {
         // This function is to stop the propagation of the event,
@@ -37,7 +37,7 @@ const Portfolios = ({portfolios: initialPortfolios}) => {
                 header="Portfolios"
                 title="Portfolio"
             >
-                <Row>
+                <Row className='portfolio-row'>
                     {portfolios.map(portfolio =>
                         <Col
                             key={portfolio._id}
