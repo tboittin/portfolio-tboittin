@@ -51,6 +51,10 @@ const BasePage = (props) => {
           content={process.env.BASE_URL + "/images/section-1.png"}
           key="og:image"
         />
+        <meta
+          name="google-site-verification"
+          content="QSwsJsnfifwg1vxUtgT_L75Q-E2uhIpaQZiA_pwTNjs"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap"
           rel="stylesheet"
