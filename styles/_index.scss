@@ -1,8 +1,4 @@
 // Index -----------
-html {
-  overflow-y: hidden;
-}
-
 .cover.cover-orange {
   background-image: linear-gradient(45deg,
       rgb(254, 202, 83),
@@ -52,21 +48,22 @@ html {
 .cover {
   background-image: linear-gradient(45deg, #00aeef 0%, #096fb9 100%);
   overflow: hidden;
-  position: relative;
+  position: absolute;
+  min-height: 100vh;
+  width: 100vw;
 }
 
 .wrapper {
-  min-height: 100vh;
-  min-width: 100vw;
+  // min-height: 100vh;
+  // min-width: 100vw;
   margin-top: 0;
   position: relative;
 }
 
 .main-section {
   display: flex;
-  height: 90vh;
+  height: 100vh;
   width: 100%;
-  margin-top: 50px;
   justify-content: center;
   align-items: center;
   padding: 0;
