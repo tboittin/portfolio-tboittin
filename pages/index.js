@@ -52,7 +52,7 @@ const Index = () => {
 
           <Container>
             <Row>
-              <Col lg="6" xs="12">
+              <Col xs="12" lg="6">
                 <div className="hero-section">
                   <div
                     className={`flipper` + (isFlipping ? " isFlipping" : "")}
