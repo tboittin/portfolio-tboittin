@@ -1,4 +1,4 @@
-import Header from "@/components/shared/Header"
+import {Header} from "@/components/shared/Header"
 import { ToastContainer, toast } from 'react-toastify';
 
 const BaseLayout = props => {
