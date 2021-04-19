@@ -8,6 +8,7 @@ import { useGetUser } from "@/actions/user";
 import { useState, useRef, useEffect } from "react";
 import BasePage from "components/BasePage";
 import Link from "next/link";
+import { FlippingCard } from "components/homeComponents/FlippingCard";
 
 const INTRO = [
   "Welcome to Thomas Boittin's website ! I put here my projects and some cool stuff !",
@@ -54,59 +55,7 @@ const Index = () => {
             <Row>
               <Col xs="12" lg="6">
                 <div className="hero-section">
-                  <div
-                    className={`flipper` + (isFlipping ? " isFlipping" : "")}
-                  >
-                    <div className="front">
-                      <div className="image" className="image image-1">
-                        <div className="hero-section-content">
-                          {/* <h2> Full Stack Web Developer </h2>
-                        <div className="hero-section-content-intro">
-                          Have a look at my portfolio and job history.
-                        </div> */}
-                          <h2> I'm a </h2>
-                          <Typed
-                            loop
-                            strings={ROLES}
-                            typeSpeed={70}
-                            backSpeed={70}
-                            backDelay={1000}
-                            loopCount={0}
-                            className="self-typed"
-                            showCursor
-                            cursorChar="|"
-                          ></Typed>
-                        </div>
-                      </div>
-
-                      {/* TODO make this card as components */}
-
-                      <div className="shadow-custom">
-                        <div className="shadow-inner"> </div>
-                      </div>
-                    </div>
-                    <div className="back">
-                      <div className="image" className="image image-2">
-                        <div className="hero-section-content">
-                          <h2> I'm a </h2>
-                          <Typed
-                            loop
-                            strings={ROLES}
-                            typeSpeed={70}
-                            backSpeed={70}
-                            backDelay={1000}
-                            loopCount={0}
-                            className="self-typed"
-                            showCursor
-                            cursorChar="|"
-                          ></Typed>
-                        </div>
-                      </div>
-                      <div className="shadow-custom-orange">
-                        <div className="shadow-inner"> </div>
-                      </div>
-                    </div>
-                  </div>
+                  <FlippingCard isFlipping={isFlipping} ROLES={ROLES}/>
                 </div>
               </Col>
               <Col lg="6" xs="12" className="hero-welcome-wrapper">
