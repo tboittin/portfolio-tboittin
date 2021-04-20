@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react'
-import { Container, Row, Col } from 'reactstrap'
 
 import { useGetUser } from '@/actions/user'
 
@@ -51,19 +50,17 @@ const Index = () => {
             <img src="/images/background-index.png" />
           </div>
 
-          <Container>
-            <Row>
-              <Col xs="12" lg="6">
-                <div className="hero-section">
-                  <FlippingCard isFlipping={isFlipping} ROLES={ROLES} />
-                </div>
-              </Col>
-              <Col lg="6" xs="12" className="hero-welcome-wrapper">
-                <TypedBlock INTRO={INTRO} />
-                <PortfolioLinkBlock />
-              </Col>
-            </Row>
-          </Container>
+          <div className="index-container">
+            <div className="hero-section">
+              <FlippingCard isFlipping={isFlipping} ROLES={ROLES} />
+            </div>
+            <div className="typed-block">
+              <TypedBlock INTRO={INTRO} />
+            </div>
+            <div className="portfolio-link-block">
+              <PortfolioLinkBlock />
+            </div>
+          </div>
         </div>
       </BasePage>
     </BaseLayout>

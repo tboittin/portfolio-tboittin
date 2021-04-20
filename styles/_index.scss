@@ -201,3 +201,29 @@
     object-fit: cover;
   }
 }
+
+.index-container {
+  z-index: 1;
+}
+
+//GRID
+@media (min-width: 1200px) {
+  .index-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 40vh 40vh;
+    .hero-section {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+    }
+    .typed-block {
+      grid-column: 2;
+      grid-row: 1;
+      align-self: center;
+    }
+    .portfolio-link-block {
+      grid-column: 2;
+      grid-row: 2;
+    }
+  }
+}
