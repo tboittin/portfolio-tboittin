@@ -73,6 +73,9 @@
   row-gap: 10px;
   .portfolio-card {
     height: .6*510px;
+    &-text {
+      font-size: 22px;
+    }
   }
 }
 
@@ -81,12 +84,22 @@
   .portfolio-container {
     grid-template-columns: 1fr 1fr;
     column-gap: 10px;
+    .portfolio-card {
+      &-text {
+        font-size: 20px;
+      }
+    }
   }
 }
 
 @media (min-width: 992px) {
   .portfolio-container {
     grid-template-columns: 1fr 1fr 1fr;
+  .portfolio-card {
+    &-text {
+      font-size: 18px;
+    }
+  }
   }
 }
 
@@ -95,6 +108,9 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     .portfolio-card {
       height: .5*510px;
+      &-text {
+        font-size: 16px;
+      }
     }
   }
 }
