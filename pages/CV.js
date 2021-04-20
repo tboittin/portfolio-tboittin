@@ -10,8 +10,8 @@ const CV = () => {
         <BaseLayout user={data} loading={loading}>
             <BasePage title="My Experiences">
                 <Row>
-                    <Col md={{size: 8, offset:2}}>
-                        <iframe style={{width:'100%', height:'800px'}} src="CV.pdf"/>
+                    <Col md={{size: 10, offset:1}}>
+                        <iframe style={{width:'100%', height:'1000px'}} src="CV.pdf"/>
                     </Col>
                 </Row>
             </BasePage>

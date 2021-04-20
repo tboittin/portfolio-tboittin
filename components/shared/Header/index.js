@@ -17,7 +17,7 @@ export const Header = ({ user, loading, className }) => {
       {({ width }) => (
         <Navbar
           className={
-            'port-navbar port-default absolute ' +
+            'port-navbar port-default ' +
             className +
             (width < 992 && isOpen ? ' is-open' : ' is-closed')
           }
