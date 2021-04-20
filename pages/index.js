@@ -64,7 +64,7 @@ const Index = () => {
                         <div className="hero-section-content-intro">
                           Have a look at my portfolio and job history.
                         </div> */}
-                          <h2> I'm a </h2>
+                          <h2> I'm a super </h2>
                           <Typed
                             loop
                             strings={ROLES}
