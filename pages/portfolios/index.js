@@ -7,13 +7,17 @@ import { Row, Col, Button } from 'reactstrap'
 import { useRouter } from 'next/router'
 import { isAuthorized } from '@/utils/auth0'
 import { useDeletePortfolio } from '@/actions/portfolios'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Portfolios = ({ portfolios: initialPortfolios }) => {
   const { data: dataU, loading: loadingU } = useGetUser()
   const router = useRouter()
-  const [portfolios, setPortfolios] = useState(initialPortfolios.reverse())
+  const [portfolios, setPortfolios] = useState([])
   const [deletePortfolio, { data, error }] = useDeletePortfolio()
+
+  useEffect(() => {
+    setPortfolios(initialPortfolios.reverse())
+  }, [])
 
   const _deletePortfolio = async (e, portfolioId) => {
     // This function is to stop the propagation of the event,
