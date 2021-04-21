@@ -13,3 +13,11 @@ export const indexData = {
     'Casual Gamer',
     'Nerd',],
 }
+
+export const aboutData = {
+    head: {
+        title: 'Thomas Boittin Website - About Me',
+        description: 'Hi I\'m Thomas Boittin, I am a React.js/Next.js front-end developer.',
+        url: 'https://tboittin.vercel.app/about',
+    }
+}

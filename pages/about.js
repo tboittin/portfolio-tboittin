@@ -3,9 +3,12 @@ import BasePage from "@/components/BasePage";
 import { useGetUser } from "@/actions/user";
 import { Row, Col, Button} from 'reactstrap'
 import { useEffect } from "react";
+import { HeadComponent } from "components/shared/HeadComponent";
+import {aboutData} from '../data'
 
 const About = () => {
   const { data, loading } = useGetUser();
+  const {title, description, url} = aboutData.head;
 
   useEffect(() => {
     return () => {
@@ -21,13 +24,17 @@ const About = () => {
     return 'fadein';
   }
 
+
+
   return (
+    <>
+    <HeadComponent title={title} description={description} url={url} />
     <BaseLayout user={data} loading={loading}>
       <BasePage className="about-page" title="About Me">
         <Row className="mt-5">
           <Col md="6">
             <div className="left-side">
-              <h1 className={`title ` + createFadeInClass()}>Hello, Welcome</h1>
+              <p className={`title ` + createFadeInClass()}>Hello, Welcome</p>
               <p className={`subsubTitle ` + createFadeInClass()}>
                 Feel free to read this short description about me.
               </p>
@@ -57,6 +64,7 @@ const About = () => {
         ;
       </BasePage>
     </BaseLayout>
+    </>
   );
 };
 
