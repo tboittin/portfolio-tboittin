@@ -15,7 +15,7 @@ export const HeadComponent = ({ title, description, url, image, imageURL,imageWi
       <meta property="og:description" content={description} key="description" />
       <meta property="og:url" content={url} key="url" />
       <meta property="og:site_name" content="Thomas Boittin" key="site_name" />
-      <meta property="og:image" content={image ? image : 'https://tboittin.vercel.app/images/section-1.png'} key="image" />
+      <meta property="og:image" content={image ? image : 'https://tboittin.vercel.app/images/shared-image.png'} key="image" />
       <meta property="og:image:secure_url" content={imageURL ? imageURL : 'https://tboittin.vercel.app/images/section-1.png'} key="imageURL" />
       <meta property="og:image:width" content={imageWidth ? imageWidth : 838} key="imageWidth" />
       <meta property="og:image:height" content={imageHeight ? imageHeight : 1364} key="imageHeight" />
