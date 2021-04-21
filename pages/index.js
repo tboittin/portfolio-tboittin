@@ -8,23 +8,16 @@ import BaseLayout from '@/components/layout/BaseLayout'
 import { FlippingCard } from 'components/homeComponents/FlippingCard'
 import { TypedBlock } from 'components/homeComponents/TypedBlock'
 import { PortfolioLinkBlock } from 'components/homeComponents/PortfolioLinkBlock'
+import { HeadComponent } from 'components/shared/HeadComponent'
 
-const INTRO = [
-  "Welcome to Thomas Boittin's website ! I put here my projects and some cool stuff !",
-]
-const ROLES = [
-  'React.js dev',
-  'Next.js dev',
-  'Fast Learner',
-  'Web enthousiast',
-  'Casual Gamer',
-  'Nerd',
-]
+import {indexData} from '@/data'
 
 const Index = () => {
   const { data, loading } = useGetUser()
   const [isFlipping, setisFlipping] = useState(false)
   const flipInterval = useRef()
+
+  const {title, description, url} = indexData.head
 
   useEffect(() => {
     startAnimation()
@@ -38,6 +31,8 @@ const Index = () => {
   }
 
   return (
+    <>
+    <HeadComponent title={title} description={description} url={url} />
     <BaseLayout
       user={data}
       loading={loading}
@@ -52,10 +47,10 @@ const Index = () => {
 
           <div className="index-container">
             <div className="hero-section">
-              <FlippingCard isFlipping={isFlipping} ROLES={ROLES} />
+              <FlippingCard isFlipping={isFlipping} ROLES={indexData.roles} />
             </div>
             <div className="typed-block">
-              <TypedBlock INTRO={INTRO} />
+              <TypedBlock INTRO={indexData.intro} />
             </div>
             <div className="portfolio-link-block">
               <PortfolioLinkBlock />
@@ -64,6 +59,7 @@ const Index = () => {
         </div>
       </BasePage>
     </BaseLayout>
+    </>
   )
 }
 
