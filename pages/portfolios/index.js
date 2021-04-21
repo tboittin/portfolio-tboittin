@@ -12,12 +12,8 @@ import { useEffect, useState } from 'react'
 const Portfolios = ({ portfolios: initialPortfolios }) => {
   const { data: dataU, loading: loadingU } = useGetUser()
   const router = useRouter()
-  const [portfolios, setPortfolios] = useState([])
+  const [portfolios, setPortfolios] = useState(initialPortfolios)
   const [deletePortfolio, { data, error }] = useDeletePortfolio()
-
-  useEffect(() => {
-    setPortfolios(initialPortfolios.reverse())
-  }, [])
 
   const _deletePortfolio = async (e, portfolioId) => {
     // This function is to stop the propagation of the event,
