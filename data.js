@@ -21,10 +21,19 @@ export const aboutData = {
         url: 'https://tboittin.vercel.app/about',
     }
 }
+
 export const portfolioData = {
     head: {
         title: 'Thomas Boittin Website - Portfolio',
         description: 'Hi I\'m Thomas Boittin, here\'s my portfolio.',
         url: 'https://tboittin.vercel.app/portfolios',
+    }
+}
+
+export const CVData = {
+    head: {
+        title: 'Thomas Boittin Website - CV',
+        description: 'Hi I\'m Thomas Boittin, here\'s my CV.',
+        url: 'https://tboittin.vercel.app/CV',
     }
 }
