@@ -1,13 +1,18 @@
+import { useEffect, useState } from 'react'
+import { Button } from 'reactstrap'
+import { useRouter } from 'next/router'
+
+import { useGetUser } from '@/actions/user'
+import { useDeletePortfolio } from '@/actions/portfolios'
+import PortfolioApi from '@/lib/api/portfolios'
+import { isAuthorized } from '@/utils/auth0'
+
 import BaseLayout from '@/components/layout/BaseLayout'
 import BasePage from '@/components/BasePage'
-import { useGetUser } from '@/actions/user'
-import PortfolioApi from '@/lib/api/portfolios'
 import { PortfolioCard } from '@/components/PortfolioCards'
-import { Row, Col, Button } from 'reactstrap'
-import { useRouter } from 'next/router'
-import { isAuthorized } from '@/utils/auth0'
-import { useDeletePortfolio } from '@/actions/portfolios'
-import { useEffect, useState } from 'react'
+import { HeadComponent } from 'components/shared/HeadComponent'
+
+import {portfolioData} from '@/data'
 
 const Portfolios = ({ portfolios: initialPortfolios }) => {
   const { data: dataU, loading: loadingU } = useGetUser()
@@ -33,7 +38,12 @@ const Portfolios = ({ portfolios: initialPortfolios }) => {
       setPortfolios(portfolios.filter((p) => p._id !== portfolioId))
     }
   }
+
+  const {title, description, url} = portfolioData.head
+
   return (
+    <>
+    <HeadComponent title={title} description={description} url={url} />
     <BaseLayout user={dataU} loading={loadingU}>
       <BasePage
         className="portfolio-page"
@@ -127,6 +137,7 @@ const Portfolios = ({ portfolios: initialPortfolios }) => {
         </Row> */}
       </BasePage>
     </BaseLayout>
+    </>
   )
 }
 

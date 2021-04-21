@@ -10,7 +10,7 @@ import { TypedBlock } from 'components/homeComponents/TypedBlock'
 import { PortfolioLinkBlock } from 'components/homeComponents/PortfolioLinkBlock'
 import { HeadComponent } from 'components/shared/HeadComponent'
 
-import {indexData} from '../data'
+import {indexData} from '@/data'
 
 const Index = () => {
   const { data, loading } = useGetUser()

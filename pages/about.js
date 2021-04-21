@@ -4,7 +4,7 @@ import { useGetUser } from "@/actions/user";
 import { Row, Col, Button} from 'reactstrap'
 import { useEffect } from "react";
 import { HeadComponent } from "components/shared/HeadComponent";
-import {aboutData} from '../data'
+import {aboutData} from '@/data'
 
 const About = () => {
   const { data, loading } = useGetUser();
